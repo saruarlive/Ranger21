@@ -376,8 +376,11 @@ class Ranger21(TO.Optimizer):
             keepdim = False
         elif xlen in (2, 3):  # linear layers
             dim = 1
-        elif xlen == 4:  # conv kernels
+        elif xlen == 4:  # conv2d kernels
             dim = (1, 2, 3)
+        elif xlen == 5:  # conv3d kernels
+            dim = (1, 2, 3, 4)    
+         
         else:
             raise ValueError(
                 f"unit_norm:: adaptive gclipping: unable to process len of {xlen} - currently must be <= 4"
